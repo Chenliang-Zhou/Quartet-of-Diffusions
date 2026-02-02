@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head lang="en">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV0RC59Q5E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-FV0RC59Q5E');
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Quartet of Diffusions</title>
+
+     <!-- mirror: F0%9F%AA%9E&lt -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+<div class="container" id="header" style="text-align: center; margin: auto;">
+    <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block">
+        <h2 class="col-md-12 text-center">
+            <b>Quartet of Diffusions: Structure-Aware Point Cloud Generation through Part and Symmetry Guidance</b><br>
+            <small>
+                ICLR 2026
+            </small>
+        </h2>
+    </div>
+    <div class="row" id="author-row" style="margin:0 auto;">
+        <div class="col-md-12 text-center" style="display: table; margin:0 auto">
+            <table class="author-table" id="author-table">
+                <tr>
+                    <td>
+                        <a style="text-decoration:none" href="https://chenliang-zhou.github.io">
+                            Chenliang Zhou
+                        </a>
+                    </td>
+                    <td>
+                        <a style="text-decoration:none" href="https://www.cl.cam.ac.uk/~fz261/">
+                            Fangcheng Zhong
+                        </a>
+                    </td>
+                    <td>
+                        <a style="text-decoration:none" href="https://www.cst.cam.ac.uk/people/wx258">
+                            Weihao Xia
+                        </a>
+                    </td>
+                    <td>
+                        <a style="text-decoration:none" href="https://www.cst.cam.ac.uk/people/ajm372">
+                            Albert Miao
+                        </a>
+                    </td>
+                <!-- </tr>
+                <tr> -->    
+                    <td>
+                        <a style="text-decoration:none" href="https://johnberg1.github.io">
+                            Canberk Baykal
+                        </a>
+                    </td>
+                    <td>
+                        <a style="text-decoration:none" href="https://www.cl.cam.ac.uk/~aco41/">
+                            Cengiz Oztireli
+                        </a>
+                    </td>
+                </tr>
+            </table>
+            <br>Department of Computer Science and Technology
+            <br>University of Cambridge<br><br>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('author-row').style.maxWidth = document.getElementById("title-row").clientWidth + 'px';
+</script>
+<div class="container" id="main">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 text-center">
+            <ul class="nav nav-pills nav-justified">
+                <li>
+                    <a href="https://arxiv.org/abs/2601.20425">
+                        <img src="./img/paper_icon.png" alt="paper icon" height="70px">
+                        <h4><strong>Paper</strong></h4>
+                    </a>
+                </li>
+                <!--                        <li>-->
+                <!--                            <a href="https://drive.google.com/drive/folders/1qm-8P6UqrhimZXp4USzFPumyfu8l1vto?usp=sharing">-->
+                <!--                            <img src="./img/data_icon.webp" height="90px">-->
+                <!--                                <h4><strong>Data</strong></h4>-->
+                <!--                            </a>-->
+                <!--                        </li>-->
+                <li>
+                    <a href="https://github.com/Chenliang-Zhou/Quartet-of-Diffusions">
+                        <img alt="github icon" src="./img/github_icon.svg" height="70px">
+                        <h4><strong>Code</strong></h4>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a href="">
+                    <img src="./img/youtube_icon.png" height="90px">
+                        <h4><strong>Video</strong></h4>
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+
+    </div>
+
+    <figure>
+        <img src="img/teaser.png" class="img-responsive" alt="main result" width="63%"
+             style="max-height: 450px;margin:auto;"/>
+        <figcaption>
+            Our method, the <em>Quartet of Diffusions</em>, harmoniously orchestrates an interpretable and controllable pipeline for structure-aware, high-quality, diverse, and efficient point cloud generation guided by part and symmetry clues.
+        </figcaption>
+    </figure>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Abstract
+            </h3>
+            <p class="text-justify">
+                We introduce the <em>Quartet of Diffusions</em>, a structure-aware point cloud generation framework that explicitly models part composition and symmetry. Unlike prior methods that treat shape generation as a holistic process or only support part composition, our approach leverages four coordinated diffusion models to learn distributions of global shape latents, symmetries, semantic parts, and their spatial assembly. This structured pipeline ensures guaranteed symmetry, coherent part placement, and diverse, high-quality outputs. By disentangling the generative process into interpretable components, our method supports fine-grained control over shape attributes, enabling targeted manipulation of individual parts while preserving global consistency. A central global latent further reinforces structural coherence across assembled parts. Our experiments show that the Quartet achieves state-of-the-art performance. To our best knowledge, this is the first 3D point cloud generation framework that fully integrates and enforces both symmetry and part priors throughout the generative process.
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Symmetry Analysis
+            </h3>
+            <figure>
+                <img src="img/show_symmetry.png" class="img-responsive" alt="network architecture training" width="95%"
+                     style="max-height: 450px;margin:auto;"/>
+                <figcaption>
+                    Point cloud airplanes, cars, and chairs with identified symmetry groups and corresponding fundamental domains for each color-coded part. Ref denotes reflection; Rot($\alpha$) denotes rotation by angle $\alpha$. Our symmetry formulation allows greater flexibility by supporting symmetries composed of multiple transformations, such as two reflections (chair legs (e)) or a rotation followed by a reflection (car wheels). Circular symmetry is approximated via small-angle rotations (chair seat (f)).
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Network Architecture
+            </h3>
+            <figure>
+                <img src="img/overview.png" class="img-responsive" alt="network architecture training" width="95%"
+                     style="max-height: 450px;margin:auto;"/>
+                <figcaption>
+                    Overview of the Quartet's architecture. Four diffusions are employed to learn the distributions of shape latents, symmetries, parts, and assemblers. By explicitly modeling different distributions, the \ours provides an interpretable and controllable framework to generate high-quality, diverse 3D shapes with guaranteed symmetry. Beige blocks denote learnable modules; gray blocks indicate outputs directly generated from the models.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Results
+            </h3>
+            <figure>
+                <img src="img/gen_vis_mix.png" class="img-responsive" alt="generation results"
+                     width="95%"
+                     style="max-height: 450px;margin:auto;"/>
+                <figcaption>
+                    Point cloud generation. Samples from the Quartet are visually appealing, diverse, and exhibit strong structural consistency. The last three columns illustrate targeted manipulation.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+        
+    <div class="row" id="bibtex">
+        <div class="col-md-8 col-md-offset-2">
+            <h3>
+                Citation
+            </h3>
+<pre><code>@inproceedings{zhou2023frepolad,
+  title={FrePolad: Frequency-Rectified Point Latent Diffusion for Point Cloud Generation},
+  author={Zhou, Chenliang and Zhong, Fangcheng and Hanji, Param and Guo, Zhilin and Fogarty, Kyle and Sztrajman, Alejandro and Gao, Hongyun and Oztireli, Cengiz},
+  booktitle={Proceedings of ECCV 2024},
+  year={2024}
+}</code></pre>
+        </div>
+    </div>
+            
+    <br><br>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <p class="text-justify">
+                The website template was borrowed from <a href="https://d2nerf.github.io">D<sup>2</sup>NeRF</a>.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+network:
+    type: "diffusion_scene_layout_ddpm"
+    # denoising network
+    net_type: "unet1d"
+
+    # concate squarewish layer
+    point_dim: 36 #29
+    latent_dim: 0
+    room_mask_condition: false # not use room_mask 
+    sample_num_points: 12 # max_length 
+
+    objectness_dim: 0
+    class_dim: 0 # 22
+    angle_dim: 12 # 2
+    translation_dim: 12 # 2
+    size_dim: 12 # 2
+    objfeat_dim: 0 # 128
+
+    # class condition
+    learnable_embedding: false # true
+    instance_condition: false # true
+    instance_emb_dim: 128
+    # diffusion config
+    diffusion_kwargs:
+        schedule_type: 'linear'
+        beta_start: 0.0001
+        beta_end: 0.02
+        time_num: 1000 
+        loss_type: 'mse'
+        model_mean_type: 'eps'
+        model_var_type: 'fixedsmall'
+        loss_separate: true
+        loss_iou: false
+        train_stats_file: "/cluster/balrog/jtang/3d_front_processed/bedrooms_objfeats_32_64/dataset_stats.txt"
+
+    net_kwargs:
+        dim: 512
+        dim_mults: [1, 1, 1, 1]
+        channels: 36 # 62
+        objectness_dim: 0
+        class_dim: 0 # 22
+        angle_dim: 12 # 2
+        translation_dim: 12 # 2
+        size_dim: 12 # 2
+        objfeat_dim: 0 # 32
+        context_dim: 640 # 0
+        instanclass_dim: 0 # 128
+        seperate_all: false # true  # separate all
+        #self_condition: true
+        # merge_bbox: true 
+        # modulate_time_context_instanclass: true
+
+#feature_extractor:
+#    name: "resnet18"
+#    feature_size: 64
+#    freeze_bn: true
+#    input_channels: 1
+
+dataset:
+    dataroot: '/local/scratch/cz363/phd-research/datasets/shapenet_part'
+    category: 'airplane'
+    max_npoints: 2048
+
+training:
+    splits: ["train", "val"]
+    epochs: 100 # 60000
+    batch_size: 32
+    save_frequency: 100 # 2000
+    vis_frequency: 50 # 2000
+    num_vis: 25
+    max_grad_norm: 10
+    # optimizer
+    optimizer: Adam
+    weight_decay: 0.0
+    # schedule
+    schedule: 'step'
+    lr: 0.0002
+    lr_step: 10000
+    lr_decay: 0.5
+
+#validation:
+#    splits: ["test"]
+#    frequency: 100 # 10
+#    batch_size: 32 # 128
+#    gen_traj: false
+#    num_step: 100
+#    gen_gt: false
+#    gen_prob_map: false
+#
+#logger:
+#    type: "wandb"
+#    project: "diffuscene"
+#
